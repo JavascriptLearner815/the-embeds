@@ -2,10 +2,8 @@ const fs = require('fs');
 
 const { prefix, token } = require('./config.json');
 
-const { exit, on } = require('process');
-
 if (!prefix || !token) {
-    exit(2);
+    process.exit(2);
 }
 
 const { Client, Collection } = require('discord.js');
@@ -19,7 +17,7 @@ client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 if (!commandFiles) {
-    exit(3);
+    process.exit(3);
 }
 
 for (const file of commandFiles) {
@@ -89,7 +87,7 @@ client.on('message', message => {
     }
 });
 
-on('exit', code => {
+process.on('exit', code => {
     console.log(`Exited with exit code ${code}.`);
 });
 
@@ -97,11 +95,11 @@ client.on('shardError', error => {
     console.error('A websocket connection encountered an error:', error);
 });
 
-on('unhandledRejection', error => {
+process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
 });
 
-on('uncaughtException', error => {
+process.on('uncaughtException', error => {
     console.error('Uncaught unresolved exception:', error);
 });
 
