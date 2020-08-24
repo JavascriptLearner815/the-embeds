@@ -87,4 +87,16 @@ process.on('exit', code => {
     console.log(`Exited with exit code ${code}.`);
 });
 
+client.on('shardError', error => {
+    console.error('A websocket connection encountered an error:', error);
+});
+
+process.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
+});
+
+process.on('uncaughtException', error => {
+    console.error('Uncaught unresolved exception:', error);
+});
+
 client.login(token);
