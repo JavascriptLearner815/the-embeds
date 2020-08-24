@@ -36,9 +36,10 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
-    if (!client.commands.has(commandName)) return;
+    const command = client.commands.get(commandName)
+        || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    const command = client.commands.get(commandName);
+    if (!command) return;
 
     if (command.guildOnly && message.channel.type === 'dm') {
         return message.reply('I can\'t do that in DMs you dumb-dumb');
