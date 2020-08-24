@@ -1,0 +1,23 @@
+{
+  "name": "the-embeds",
+  "version": "1.0.0",
+  "description": "Super fun bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JavascriptLearner815/the-embeds.git"
+  },
+  "author": "Dean Summer",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JavascriptLearner815/the-embeds/issues"
+  },
+  "homepage": "https://github.com/JavascriptLearner815/the-embeds#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "eslint": "^7.7.0"
+  }
+}

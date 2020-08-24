@@ -3,7 +3,7 @@
 config.json
 .vscode
 /.vscode
-eslintrc.json
+.eslintrc.json
 .dat
 .dll
 .exe
