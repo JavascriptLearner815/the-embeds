@@ -45,6 +45,10 @@ client.on('message', message => {
         return message.reply('I can\'t do that in DMs you dumb-dumb');
     }
 
+    if (!message.guild.me.hasPermission('VIEW_CHANNEL') || !message.guild.me.hasPermission('SEND_MESSAGES')) {
+        console.warn(`Can't send messages in ${message.guild.name}.`);
+    }
+
     if (command.args && !args.length) {
         let reply = 'You need to provide some arguments.';
 
