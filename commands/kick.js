@@ -8,7 +8,7 @@ module.exports = {
     aliases: ['remove'],
     execute(message, args) {
         const member = message.mentions.members.first();
-        const reason = args.slice(1).join(' ');
+        let reason = args.slice(1).join(' ');
 
         if (!message.guild.member(message.author).hasPermission('KICK_MEMBERS')) {
             return message.channel.send('You don\'t have the permission to kick members!');
@@ -25,6 +25,8 @@ module.exports = {
         if (!message.guild.me.hasPermission('KICK_MEMBERS')) {
             return message.channel.send('I don\'t have the permission to do that.');
         }
+
+        if (!reason) reason = 'Unspecified';
 
         member.kick(reason);
     },
